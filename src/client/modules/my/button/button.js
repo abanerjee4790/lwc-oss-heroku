@@ -4,7 +4,7 @@ export default class Button extends LightningElementSLDS {
     getMessage() {
         fetch('https://fierce-crag-08924.herokuapp.com/api/v1/endpoint')
             .then((response) => {
-                return response;
+                return response.json();
             })
             .then((result) => {
                 // eslint-disable-next-line no-alert
