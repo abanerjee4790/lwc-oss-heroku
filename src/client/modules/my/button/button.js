@@ -8,7 +8,7 @@ export default class Button extends LightningElementSLDS {
             })
             .then((result) => {
                 // eslint-disable-next-line no-alert
-                alert(result.message);
+                console.log(result.message);
             });
     }
 }
