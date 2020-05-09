@@ -1,3 +1,3 @@
 import LightningElementSLDS from 'util/lightningElementSLDS';
 
-export default class App extends LightningElementSLDS {}
+export default class Button extends LightningElementSLDS {}
