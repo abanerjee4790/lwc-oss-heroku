@@ -19,3 +19,5 @@ app.listen(PORT, () =>
         `✅  API Server started: http://${HOST}:${PORT}/api/v1/endpoint`
     )
 );
+
+app.get('/getMessage', (req, res) => res.json({ message: 'Hello LWC' }));
