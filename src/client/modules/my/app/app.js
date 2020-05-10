@@ -1,3 +1,3 @@
-import LightningElementSLDS from 'util/lightningElementSLDS';
+import { LightningElement } from 'lwc';
 
-export default class App extends LightningElementSLDS {}
+export default class App extends LightningElement {}
