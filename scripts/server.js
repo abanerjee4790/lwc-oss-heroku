@@ -14,12 +14,12 @@ const DIST_DIR = './dist';
 
 app.use(express.static(DIST_DIR));
 
-app.use('*', (req, res) => {
+/*app.use('*', (req, res) => {
     //res.sendFile(path.resolve(DIST_DIR, 'index.html'));
-    res.json({ message: 'Hello LWC' });
-});
+    //res.json({ message: 'Hello LWC' });
+});*/
 
-app.get('/api/v1/getMessage', (req, res) => {
+app.use('/api/v1/getMessage', (req, res) => {
     res.json({ message: 'Hello LWC' });
 });
 
