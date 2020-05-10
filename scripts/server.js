@@ -15,7 +15,8 @@ const DIST_DIR = './dist';
 app.use(express.static(DIST_DIR));
 
 app.use('*', (req, res) => {
-    res.sendFile(path.resolve(DIST_DIR, 'index.html'));
+    //res.sendFile(path.resolve(DIST_DIR, 'index.html'));
+    res.send('Hello LWC');
 });
 
 app.get('/api/v1/getMessage', (req, res) => {
