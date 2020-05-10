@@ -8,6 +8,7 @@ export default class LightningElementSLDS extends LightningElement {
         let _sldsPath = '../SLDS/styles';
         _sldsPath += '/salesforce-lightning-design-system.css';
         const styles = document.createElement('link');
+        styles.type = 'text/css';
         styles.href = _sldsPath;
         styles.rel = 'stylesheet';
         this.template.appendChild(styles);
