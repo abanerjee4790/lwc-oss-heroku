@@ -1,6 +1,6 @@
-import LightningElementSLDS from 'util/lightningElementSLDS';
+import { LightningElement } from 'lwc';
 
-export default class Button extends LightningElementSLDS {
+export default class Button extends LightningElement {
     getMessage() {
         fetch('/api/v1/getMessage')
             .then((response) => {
