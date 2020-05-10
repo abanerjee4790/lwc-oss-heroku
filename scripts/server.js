@@ -18,6 +18,10 @@ app.use('*', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 
+app.get('/api/v1/getMessage', (req, res) => {
+    res.json({ message: 'Hello LWC' });
+});
+
 app.listen(PORT, () =>
     console.log(`✅  Server started: http://${HOST}:${PORT}`)
 );
