@@ -11,11 +11,11 @@ app.use(compression());
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 const DIST_DIR = './dist';
-const customServer = require(path.resolve('./src/server/'));
+//const customServer = require(path.resolve('./src/server/'));
 
 app.use(express.static(DIST_DIR));
 
-customServer(app);
+//customServer(app);
 
 /*app.use('*', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
