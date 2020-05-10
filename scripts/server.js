@@ -19,7 +19,7 @@ app.use(express.static(DIST_DIR));
     //res.json({ message: 'Hello LWC' });
 });*/
 
-app.use('/api/v1/getMessage', (req, res) => {
+app.get('/api/v1/getMessage', (req, res) => {
     res.json({ message: 'Hello LWC' });
 });
 
