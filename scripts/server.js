@@ -39,20 +39,23 @@ app.use(express.static(DIST_DIR));
 //Express Routings
 app.get('/api/v1/getAccRecords', (req, res) => {
     // eslint-disable-next-line consistent-return
-    conn.query('SELECT Id, Name FROM Account', (err, result) => {
-        if (err) {
-            return console.error(err);
-        }
+    conn.query(
+        'SELECT Id, Name FROM Account ORDER BY LastModifiedDate DESC',
+        (err, result) => {
+            if (err) {
+                return console.error(err);
+            }
 
-        res.send(result.records);
-    });
+            res.send(result.records);
+        }
+    );
 });
 
 app.post('/api/v1/newAccRecord', (req, res) => {
     // eslint-disable-next-line consistent-return
-    conn.sobject("Account").create({ Name : req.body.accName }, (err, ret) => {
-        if (err || !ret.success) { 
-            return console.error(err, ret); 
+    conn.sobject('Account').create({ Name: req.body.accName }, (err, ret) => {
+        if (err || !ret.success) {
+            return console.error(err, ret);
         }
 
         res.send(ret.id);
