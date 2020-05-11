@@ -29,6 +29,8 @@ conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
     if (err) {
         return console.error(err);
     }
+
+    console.log(conn.accessToken);
 });
 
 app.use(express.static(DIST_DIR));
