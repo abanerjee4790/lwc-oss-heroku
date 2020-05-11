@@ -14,14 +14,15 @@ const DIST_DIR = './dist';
 
 app.use(express.static(DIST_DIR));
 
+//Express Routings
+app.get('/api/v1/getMessage', (req, res) => {
+    res.json({ message: 'Hello LWC' });
+});
+
 /*app.use('*', (req, res) => {
     //res.sendFile(path.resolve(DIST_DIR, 'index.html'));
     //res.json({ message: 'Hello LWC' });
 });*/
-
-app.get('/api/v1/getMessage', (req, res) => {
-    res.json({ message: 'Hello LWC' });
-});
 
 app.listen(PORT, () =>
     console.log(`✅  Server started: http://${HOST}:${PORT}`)

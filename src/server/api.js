@@ -14,6 +14,10 @@ app.get('/api/v1/endpoint', (req, res) => {
     res.json({ success: true });
 });
 
+app.get('/api/v1/getMessage', (req, res) => {
+    res.json({ message: 'Hello LWC' });
+});
+
 app.listen(PORT, () =>
     console.log(
         `✅  API Server started: http://${HOST}:${PORT}/api/v1/endpoint`
