@@ -6,7 +6,7 @@ export default class App extends LightningElementSLDS {
     constructor() {
         super();
 
-        fetch('/api/v1/getRecords')
+        fetch('/api/v1/getOppRecords')
             .then((response) => {
                 return response.json();
             })
