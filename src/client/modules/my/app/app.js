@@ -1,17 +1,17 @@
 import LightningElementSLDS from 'util/lightningElementSLDS';
 
 export default class App extends LightningElementSLDS {
-    oppRecords;
+    accRecords;
 
     constructor() {
         super();
 
-        fetch('/api/v1/getOppRecords')
+        fetch('/api/v1/getAccRecords')
             .then((response) => {
                 return response.json();
             })
             .then((result) => {
-                this.oppRecords = result;
+                this.accRecords = result;
             });
     }
 }

@@ -13,6 +13,7 @@ const jsforce = require('jsforce');
 const app = express();
 app.use(helmet());
 app.use(compression());
+app.use(express.json());
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
@@ -36,14 +37,25 @@ conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
 app.use(express.static(DIST_DIR));
 
 //Express Routings
-app.get('/api/v1/getOppRecords', (req, res) => {
+app.get('/api/v1/getAccRecords', (req, res) => {
     // eslint-disable-next-line consistent-return
-    conn.query('SELECT Id, Name, StageName FROM Opportunity', (err, result) => {
+    conn.query('SELECT Id, Name FROM Account', (err, result) => {
         if (err) {
             return console.error(err);
         }
 
         res.send(result.records);
+    });
+});
+
+app.post('/api/v1/newAccRecord', (req, res) => {
+    // eslint-disable-next-line consistent-return
+    conn.sobject("Account").create({ Name : req.body.accName }, (err, ret) => {
+        if (err || !ret.success) { 
+            return console.error(err, ret); 
+        }
+
+        res.send(ret.id);
     });
 });
 

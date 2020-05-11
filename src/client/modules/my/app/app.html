@@ -3,16 +3,11 @@
         <my-header></my-header>
     </header>
 
-    <div class="slds-align_absolute-center">
-        <button
-            class="slds-button slds-button_brand slds-m-around_medium"
-            onclick={newOpportunity}
-        >
-            New Opportunity
-        </button>
+    <div class="slds-m-around_medium">
+        <my-new-opp></my-new-opp>
     </div>
 
     <div class="slds-m-around_medium">
-        <my-opp-tiles opp-records={oppRecords}></my-opp-tiles>
+        <my-opp-tiles acc-records={accRecords}></my-opp-tiles>
     </div>
 </template>

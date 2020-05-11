@@ -1,35 +1,13 @@
 <template>
     <div style="width: 320px;">
         <ul class="slds-has-dividers_around-space">
-            <template if:true={oppRecords}>
-                <template for:each={oppRecords} for:item="opp">
-                    <li class="slds-item" key={opp.Id}>
+            <template if:true={accRecords}>
+                <template for:each={accRecords} for:item="acc">
+                    <li class="slds-item" key={acc.Id}>
                         <article class="slds-tile slds-tile_board">
-                            <h3
-                                class="slds-tile__title slds-truncate"
-                                title="Opportunity Name"
-                            >
-                                <a href="javascript:void(0);"
-                                    >Opportunity Name</a
-                                >
-                            </h3>
                             <div class="slds-tile__detail">
                                 <p class="slds-text-heading_medium">
-                                    {opp.Name}
-                                </p>
-                                <p
-                                    class="slds-truncate"
-                                    title="Opportunity Stage"
-                                >
-                                    <a href="javascript:void(0);"
-                                        >Opportunity Stage</a
-                                    >
-                                </p>
-                                <p
-                                    class="slds-truncate"
-                                    title="Opportunity Stage"
-                                >
-                                    {opp.StageName}
+                                    {acc.Name}
                                 </p>
                             </div>
                         </article>
