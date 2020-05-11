@@ -1,8 +1,6 @@
 import LightningElementSLDS from 'util/lightningElementSLDS';
 
-
 export default class NewOpp extends LightningElementSLDS {
-
     newAccount() {
         let accName = this.template.querySelector('.slds-input').value;
 
@@ -10,15 +8,16 @@ export default class NewOpp extends LightningElementSLDS {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-              },
-            body: JSON.stringify({'accName' : accName})
+            },
+            body: JSON.stringify({ accName: accName })
         })
-        .then((response) => {
-            return response.text();
-        })
-        .then((result) => {
-            // eslint-disable-next-line no-alert
-            alert('New Account Record--> '+result);
-        });
+            .then((response) => {
+                return response.text();
+            })
+            .then((result) => {
+                // eslint-disable-next-line no-alert
+                alert('New Account Record--> ' + result);
+                window.location.reload();
+            });
     }
 }
