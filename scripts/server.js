@@ -17,9 +17,8 @@ app.use(compression());
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 const DIST_DIR = './dist';
-const SF_USERNAME = process.env.SF_USERNAME || 'phpuser04@trailhead.com';
-const SF_PASSWORD =
-    process.env.SF_PASSWORD || 'abhi4791#ANTeFtMvFWQVT96p1MJ5Pxeg';
+const SF_USERNAME = process.env.SF_USERNAME;
+const SF_PASSWORD = process.env.SF_PASSWORD;
 
 const conn = new jsforce.Connection({
     loginUrl: 'https://login.salesforce.com'
