@@ -22,27 +22,25 @@ const DIST_DIR = './dist';
 const SF_USERNAME = process.env.SF_USERNAME;
 const SF_PASSWORD = process.env.SF_PASSWORD;
 
-/*const users = [
+const users = [
     {
         username: 'john',
         password: 'password123admin',
         role: 'admin'
     }
-];*/
+];
 
-/*const accessTokenSecret = 'youraccesstokensecret';
+const accessTokenSecret = 'youraccesstokensecret';
 
 app.get('/api/v1/login', (req, res) => {
-
-    const accessToken = jwt.sign({ username: 'john'}, accessTokenSecret);
+    const accessToken = jwt.sign({ username: 'john' }, accessTokenSecret);
 
     res.json({
         accessToken
     });
+});
 
-});*/
-
-/*const authenticateJWT = (req, res, next) => {
+const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (authHeader) {
@@ -59,7 +57,7 @@ app.get('/api/v1/login', (req, res) => {
     } else {
         res.sendStatus(401);
     }
-};*/
+};
 
 app.use(express.static(DIST_DIR));
 
@@ -76,7 +74,7 @@ conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
 });
 
 //Express Routings
-app.get('/api/v1/getAccRecords', (req, res) => {
+app.get('/api/v1/getAccRecords', authenticateJWT, (req, res) => {
     // eslint-disable-next-line consistent-return
     conn.query(
         'SELECT Id, Name FROM Account ORDER BY LastModifiedDate DESC',
