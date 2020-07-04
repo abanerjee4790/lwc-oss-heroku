@@ -9,6 +9,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 const jsforce = require('jsforce');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(helmet());
@@ -36,8 +37,29 @@ conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
 
 app.use(express.static(DIST_DIR));
 
+const accessTokenSecret = 'youraccesstokensecret';
+
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, accessTokenSecret, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
 //Express Routings
-app.get('/api/v1/getAccRecords', (req, res) => {
+app.get('/api/v1/getAccRecords', authenticateJWT, (req, res) => {
     // eslint-disable-next-line consistent-return
     conn.query(
         'SELECT Id, Name FROM Account ORDER BY LastModifiedDate DESC',
