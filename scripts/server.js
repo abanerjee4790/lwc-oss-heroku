@@ -22,24 +22,27 @@ const DIST_DIR = './dist';
 const SF_USERNAME = process.env.SF_USERNAME;
 const SF_PASSWORD = process.env.SF_PASSWORD;
 
-const conn = new jsforce.Connection({
-    loginUrl: 'https://login.salesforce.com'
-});
-
-// eslint-disable-next-line consistent-return
-conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
-    if (err) {
-        return console.error(err);
+/*const users = [
+    {
+        username: 'john',
+        password: 'password123admin',
+        role: 'admin'
     }
+];*/
 
-    console.log(conn.accessToken);
-});
+/*const accessTokenSecret = 'youraccesstokensecret';
 
-app.use(express.static(DIST_DIR));
+app.get('/api/v1/login', (req, res) => {
 
-const accessTokenSecret = 'youraccesstokensecret';
+    const accessToken = jwt.sign({ username: 'john'}, accessTokenSecret);
 
-const authenticateJWT = (req, res, next) => {
+    res.json({
+        accessToken
+    });
+
+});*/
+
+/*const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (authHeader) {
@@ -56,10 +59,24 @@ const authenticateJWT = (req, res, next) => {
     } else {
         res.sendStatus(401);
     }
-};
+};*/
+
+app.use(express.static(DIST_DIR));
+
+//SF Connection
+const conn = new jsforce.Connection({
+    loginUrl: 'https://login.salesforce.com'
+});
+
+// eslint-disable-next-line consistent-return
+conn.login(SF_USERNAME, SF_PASSWORD, (err) => {
+    if (err) {
+        return console.error(err);
+    }
+});
 
 //Express Routings
-app.get('/api/v1/getAccRecords', authenticateJWT, (req, res) => {
+app.get('/api/v1/getAccRecords', (req, res) => {
     // eslint-disable-next-line consistent-return
     conn.query(
         'SELECT Id, Name FROM Account ORDER BY LastModifiedDate DESC',
